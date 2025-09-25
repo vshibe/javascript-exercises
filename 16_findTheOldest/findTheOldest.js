@@ -1,8 +1,9 @@
 const findTheOldest = function(arr) {
-	arr.sort((a, b) => {
-		return getAge(a.yearOfBirth, a.yearOfDeath)-getAge(b.yearOfBirth, b.yearOfDeath);
+	return arr.reduce((a, b) => {
+		const oldAge = getAge(a.yearOfBirth, a.yearOfDeath);
+		const newAge = getAge(b.yearOfBirth, b.yearOfDeath);
+		return oldAge > newAge ? a : b;
 	});
-	return arr[arr.length-1];
 };
 
 const getAge = function(birth, death) {
